@@ -14,4 +14,16 @@
             <td>{{ $task->content }}</td>
         </tr>
     </table>
+    
+    {!! link_to_route('tasks.edit', 'このtaskを編集', ['id' => $task->id], ['class' => 'btn btn-light']) !!}
+
+    <p>
+        
+    </p>
+    
+    {!! link_to_route('tasks.index', '戻る', [], ['class' => 'btn btn-primary']) !!}
+
+    {!! Form::close() !!}
+    
+    
 @endsection
