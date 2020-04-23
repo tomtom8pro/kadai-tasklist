@@ -21,6 +21,13 @@
         
     </p>
     
+    {!! Form::model($task, ['route' => ['tasks.destroy', $task->id], 'method' => 'delete']) !!}
+        {!! Form::submit('削除', ['class' => 'btn btn-danger']) !!}
+
+    <p>
+        
+    </p>
+    
     {!! link_to_route('tasks.index', '戻る', [], ['class' => 'btn btn-primary']) !!}
 
     {!! Form::close() !!}
