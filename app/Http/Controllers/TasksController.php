@@ -32,7 +32,7 @@ class TasksController extends Controller
      */
     public function create()
     {
-
+    
         $task = new Task;
 
         return view('tasks.create', [
@@ -49,8 +49,15 @@ class TasksController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validate($request, [
+            'status' => 'required|max:10',      //空白でない　かつ　10文字以内
+            'content' => 'required|max:191',    //空白でない　かつ　191文字以内
+        ]);
+    
         $task = new Task;
         
+        $task->status = $request->status;       //追加
         $task->content = $request->content;
         $task->save();
 
@@ -102,8 +109,14 @@ class TasksController extends Controller
     public function update(Request $request, $id)
     {
 
+        $this->validate($request, [
+            'status' => 'required|max:10',      //空白でない　かつ　10文字以内
+            'content' => 'required|max:191',    //空白でない　かつ　191文字以内
+        ]);
+
         $task = Task::find($id);
         
+        $task->status = $request->status;       //追加
         $task->content = $request->content;
         $task->save();
 
